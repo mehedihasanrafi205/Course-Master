@@ -152,10 +152,10 @@ export default function CoursePlayer() {
 
                                 <button
                                     onClick={handleMarkComplete}
-                                    disabled={!!enrollment?.progress?.completedLessons?.includes(lesson)}
-                                    className={`btn btn-sm sm:btn-md ${enrollment?.progress?.completedLessons?.includes(lesson) ? "btn-disabled" : "btn-success"} mt-3 sm:mt-4 w-full sm:w-auto`}
+                                    disabled={!!enrollment?.progress?.completedLessons?.includes(String(lesson._id))}
+                                    className={`btn btn-sm sm:btn-md ${enrollment?.progress?.completedLessons?.includes(String(lesson._id)) ? "btn-disabled" : "btn-success"} mt-3 sm:mt-4 w-full sm:w-auto`}
                                 >
-                                    {enrollment?.progress?.completedLessons?.includes(lesson) ? "Completed ✓" : "✓ Mark as Complete"}
+                                    {enrollment?.progress?.completedLessons?.includes(String(lesson._id)) ? "Completed ✓" : "✓ Mark as Complete"}
                                 </button>
                             </div>
                         </div>
