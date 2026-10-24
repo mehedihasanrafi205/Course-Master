@@ -10,10 +10,8 @@ export default function Navbar() {
     const token = getToken();
     const [me, setMe] = useState(null);
 
-    const navLinkClass = ({ isActive, to }) =>
-        (isActive || window.location.pathname.startsWith("/"))
-            ? "text-primary font-semibold"
-            : "text-base-content/80 hover:text-primary";
+    const navLinkClass = ({ isActive }) =>
+        isActive ? "text-primary font-semibold" : "text-base-content/80 hover:text-primary";
 
     const handleLogout = () => {
         clearToken();
@@ -187,7 +185,7 @@ export default function Navbar() {
                                         </Link>
                                     </li>
 
-                                    <li className="w-full"><Link to="/profile">Profile</Link></li>
+
                                     <li className="w-full">
                                         <button onClick={handleLogout} className="btn btn-ghost btn-sm w-full text-red-500">
                                             Logout
