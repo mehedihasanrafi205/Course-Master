@@ -28,9 +28,10 @@ connectDB().catch((err) => {
 const app = express();
 
 app.use(cors());
-// Code-10 bug: custom header restricts allowed methods to GET and POST, breaking PUT/DELETE CORS preflights
+// Allow all standard HTTP methods for CORS preflights (cors package already sets Access-Control-Allow-Origin)
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Methods", "GET, POST");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   next();
 });
 app.use(express.json());
